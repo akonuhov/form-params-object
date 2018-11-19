@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>FormParamsObject</title>
+  </head>
+  <body>
+    <script type="text/javascript" src="FormParamsObject.js"></script>
+    <script type="text/javascript">
+      var params = new FormParamsObject({
+        param1: 'test1',
+        param2: {
+          param21: 'test2',
+          param22: {
+            number: ["123", "456"],
+            text: ["text1", "text2"]
+          }
+        }
+      });
+      document.write('<p>' + params.getObjectProperty('param2.param21') + '</p>');
+      document.write('<p>' + params.getObjectProperty('param1.param11.param33') + '</p>');
+      document.write('<p>' + params.setObjectProperty('param2.param21', 'new value') + '</p>');
+      document.write('<p>' + params.setObjectProperty('param1.param11.param33', 'new value2') + '</p>');
+      document.write('<p>' + params.getObjectProperty('param1.param11.param33') + '</p>');
+      document.write('<p>' + JSON.stringify(params.convertObjectToArray('param2.param22')) + '</p>');
+      document.write('<p>' + JSON.stringify(params.getFullObject()) + '</p>');
+    </script>
+  </body>
+</html>
